@@ -6,15 +6,17 @@
     android:layout_height="match_parent"
     android:background="#ddf7e3">
 
+
     <ImageView
         android:id="@+id/S2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="144dp"
         android:src="@drawable/s2"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="131dp" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.23" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -53,13 +55,22 @@
         android:textColor="#000000"
         android:textSize="21.7sp"
         android:textStyle="normal"
-        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="79dp"
+        tools:layout_editor_absoluteY="359dp"
+        tools:text="연결코드 :" />
+
+    <EditText
+        android:id="@+id/opponentConnectCode"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintHorizontal_bias="0.735"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.456"
-        tools:text="해당 번호를 연인에게 알려주세요" />
+        tools:layout_editor_absoluteY="359dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,11 +79,49 @@
         android:textSize="21.7sp"
         android:textStyle="normal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="54dp"
+        tools:text="당신의 이름 :" />
+
+    <EditText
+        android:id="@+id/myName"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.735"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="464dp"
+        tools:text="연애 시작일 :" />
+
+
+    <EditText
+        android:id="@+id/myName"
+        android:layout_width="140dp"
+        android:layout_height="35dp"
+        android:background="@color/white"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.735"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="혹은 연인의 번호를 입력해 주세요." />
+        app:layout_constraintVertical_bias="0.561" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,24 +129,32 @@
         android:textColor="#000000"
         android:textSize="21.7sp"
         android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="452dp"
-        tools:text="두 분이 같은 연결코드를" />
+        tools:layout_editor_absoluteX="119dp"
+        tools:layout_editor_absoluteY="514dp"
+        tools:text="성별 :" />
+    <RadioGroup
+        android:id="@+id/radio_group_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-    <TextView
+    </RadioGroup>
+
+    <RadioButton
+        android:id="@+id/radio_button_female"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="21.7sp"
-        android:textStyle="normal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.541"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="488dp"
-        tools:text="입력해야만 로그인이 진행됩니다." />
+        android:text="여"
+        tools:layout_editor_absoluteX="247dp"
+        tools:layout_editor_absoluteY="506dp" />
 
+    <RadioButton
+        android:id="@+id/radio_button_male"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="남"
+        tools:layout_editor_absoluteX="184dp"
+        tools:layout_editor_absoluteY="506dp" />
 
     <Button
         android:id="@+id/connect"
@@ -106,8 +163,8 @@
         android:backgroundTint="#5D9C59"
         android:text="연결하기"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="541dp" />
-
+        tools:layout_editor_absoluteY="568dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
