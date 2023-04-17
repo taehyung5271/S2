@@ -47,11 +47,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/alram"
+        android:id="@+id/locker"
         android:layout_width="45.3dp"
         android:layout_height="45.7dp"
         android:layout_marginTop="52dp"
-        android:src="@drawable/bell"
+        android:src="@drawable/school-locker"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.206"
         app:layout_constraintStart_toStartOf="parent"
