@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ddf7e3">
+
+
+    <ImageView
+        android:id="@+id/S2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/s2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="150dp"
+        tools:layout_editor_absoluteY="131dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="320dp"
+        android:layout_marginStart="50dp"
+        tools:text="당신의 연결코드는" />
+
+    <TextView
+        android:id="@+id/connectCode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#707070"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="320dp"
+        android:layout_marginStart="225dp"
+        tools:text="3341" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="320dp"
+        android:layout_marginStart="280dp"
+        tools:text="입니다." />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000" 
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="355dp"
+        android:layout_marginEnd="220dp"
+        tools:text="연결코드 :" />
+
+    <EditText
+        android:id="@+id/opponentConnectCode"
+        android:layout_width="140dp"
+        android:layout_height="25.7dp"
+        android:background="@color/white"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="358dp"
+        android:layout_marginStart="185dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="390dp"
+        android:layout_marginEnd="220dp"
+        tools:text="당신의 이름 :" />
+
+    <EditText
+        android:id="@+id/myNname"
+        android:layout_width="140dp"
+        android:layout_height="25.7dp"
+        android:background="@color/white"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="393dp"
+        android:layout_marginStart="185dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="425dp"
+        android:layout_marginEnd="220dp"
+        tools:text="연애 시작일 :" />
+
+
+    <EditText
+        android:id="@+id/startLoveDay"
+        android:layout_width="140dp"
+        android:layout_height="25.7dp"
+        android:background="@color/white"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="428dp"
+        android:layout_marginStart="185dp" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#000000"
+        android:textSize="21.7sp"
+        android:textStyle="normal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="460dp"
+        android:layout_marginEnd="220dp"
+        tools:text="성별 :" />
+    <RadioGroup
+        android:id="@+id/radio_group_gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="160dp"
+        >
+
+    </RadioGroup>
+
+    <RadioButton
+        android:id="@+id/radio_button_female"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="남"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="160dp" />
+
+    <RadioButton
+        android:id="@+id/radio_button_male"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="여"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="110dp" />
+
+    <Button
+        android:id="@+id/connect"
+        android:layout_width="90.7dp"
+        android:layout_height="41dp"
+        android:backgroundTint="#5D9C59"
+        android:text="연결하기"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="500dp"
+         />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
