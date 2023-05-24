@@ -28,8 +28,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="320dp"
         android:layout_marginStart="50dp"
-        
-        tools:text="당신의 연결코드는" />
+        android:text="당신의 연결코드는" />
 
     <TextView
         android:id="@+id/connectCode"
@@ -42,7 +41,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="320dp"
         android:layout_marginStart="225dp"
-        tools:text="3341" />
+        android:text="000000" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -50,11 +49,11 @@
         android:textColor="#000000"
         android:textSize="21.7sp"
         android:textStyle="normal"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/connectCode"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="320dp"
-        android:layout_marginStart="280dp"
-        tools:text="입니다." />
+
+        android:text="입니다." />
 
     <TextView
         android:layout_width="wrap_content"
@@ -66,7 +65,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="355dp"
-        tools:text="해당 번호를 연인에게 알려주세요" />
+        android:text="해당 번호를 연인에게 알려주세요" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -78,7 +77,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="390dp"
-        tools:text="혹은 연인의 번호를 입력해 주세요." />
+        android:text="혹은 연인의 번호를 입력해 주세요." />
 
     <TextView
         android:layout_width="wrap_content"
@@ -90,7 +89,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="425dp"
-        tools:text="두 분이 같은 연결코드를" />
+        android:text="두 분이 같은 연결코드를" />
 
 
     <TextView
@@ -103,7 +102,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="460dp"
-        tools:text="입력해야만 로그인이 진행됩니다." />
+        android:text="입력해야만 로그인이 진행됩니다." />
 
     <Button
         android:id="@+id/connect"
