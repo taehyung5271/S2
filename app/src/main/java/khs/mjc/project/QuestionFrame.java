@@ -7,58 +7,38 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link QuestionFrame#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class QuestionFrame extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public QuestionFrame() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment QuestionFrame.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static QuestionFrame newInstance(String param1, String param2) {
-        QuestionFrame fragment = new QuestionFrame();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_question_frame, container, false);
+        View view = inflater.inflate(R.layout.fragment_question_frame,container,false);
+        int server_day=4; //서버에서 받아오는 일 수
+        Question quest=new Question(server_day);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,
+                quest.question);
+        ListView list=view.findViewById(R.id.listView1);
+        list.setAdapter(adapter);
+        return view;
+    }
+}
+class Question{
+    String[] man; //남자 질문지 내용
+    String[] woman;//여자 질문지 내용
+    String[] question;//질문
+    Question(int day){
+        man=new String[day]; //day값 만큼 배열 생성
+        woman=new String[day]; //day값 만큼 배열 생성
+        question=new String[day]; //day값 만큼 배열 생성
+        for(int i=0;day>0;day--){
+            man[i]=Integer.toString(day); //day값 만큼 디비에서 불러와서 저장
+            woman[i]=Integer.toString(day); //역순출력 어케할지 고민좀 해봐야할듯
+            question[i]=Integer.toString(day);
+            i++;
+        }
     }
 }
