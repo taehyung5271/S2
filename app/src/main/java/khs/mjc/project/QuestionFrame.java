@@ -80,6 +80,7 @@ public class QuestionFrame extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(),QuestionList.class);
+                quest.send(intent, position,server_day);
                 startActivity(intent);
             }
         });
@@ -95,8 +96,8 @@ class Question{
         woman=new String[day]; //day값 만큼 배열 생성
         question=new String[day]; //day값 만큼 배열 생성
         for(int i=0;day>0;day--){
-            man[i]=Integer.toString(day); //day값 만큼 디비에서 불러와서 저장
-            woman[i]=Integer.toString(day);
+            man[i]="Null"; //day값 만큼 디비에서 불러와서 저장
+            woman[i]="Null";
             if(q_list[i].length()>25) {
                 String a;
                 String b;
@@ -114,5 +115,11 @@ class Question{
                 i++;
 
         }
+    }
+    void send(Intent intent, int position,int server){
+        intent.putExtra("man",this.man[position]); //나
+        intent.putExtra("woman",this.woman[position]);// 상대
+        intent.putExtra("question",this.question[position]);//질문
+        intent.putExtra("number",server-position);//질문지 번호
     }
 }

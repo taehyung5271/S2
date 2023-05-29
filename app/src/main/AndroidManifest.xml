@@ -60,6 +60,8 @@
             android:exported="true"/>
         <activity android:name=".Main_gps"
             android:exported="true"/>
+        <activity android:name=".QuestionList"
+            android:exported="true"/>
         <activity android:name=".Main_Shop"
             android:exported="true"/>
         <activity android:name=".Profile_menuui"
