@@ -1,42 +1,45 @@
 package khs.mjc.project;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.BroadcastReceiver;
-import android.content.Context;
+import android.app.Dialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import java.util.Calendar;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
+import org.w3c.dom.Text;
 
-public class QuestionFrame extends Fragment {
+public class QuestionList extends AppCompatActivity {
+    Dialog dia;
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_question_frame,container,false);
-        int server_day; //서버에서 받아오는 일 수
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.question);
 
-        setDailyAlarm();
+        TextView q_title, q_subtitle, man_name, woman_name;
+        TextView man_text, woman_text;
+        q_title=findViewById(R.id.q_title);
+        q_subtitle=findViewById(R.id.q_subtitle);
+        man_name=findViewById(R.id.man_name);
+        woman_name=findViewById(R.id.woman_name);
 
-        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        server_day=sharedPreferences.getInt("day", 1);
+        man_text=findViewById(R.id.man_text);
+        woman_text=findViewById(R.id.woman_text);
 
-
+        dia=new Dialog(QuestionList.this);
+        dia.setContentView(R.layout.question_answer_dialog);
         String[] q_list={
                 "오늘이 두 분의 첫 만남이라면 당신을 어떻게 소개하실 건가요?",
                 "그 사람을 처음 마주했을 때 당신의 감정은 어땠나요?",
@@ -87,87 +90,46 @@ public class QuestionFrame extends Fragment {
                 "지금 그 사람과 어디든 떠날 수 있다면, 함께 가고 싶은 곳은 어디인가요? ",
                 "멀리서 그 사람이 걸어 볼 때 어떤 생각이 드나요?",
                 "두 분의 연애 스토리를 영화로 만든다면 어떤 장르일까요?"};
-        Question quest=new Question(server_day,q_list);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1,
-                quest.question);
-        ListView list=view.findViewById(R.id.listView1);
-        list.setAdapter(adapter);
 
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        Intent intent = getIntent();
+        String man=intent.getStringExtra("man");
+        String woman=intent.getStringExtra("woman");
+        //String question=intent.getStringExtra("question");
+
+        int number=intent.getIntExtra("number",0);
+        q_title.setText(q_list[number-1]);
+        man_name.setText("나");
+        woman_name.setText("상대");
+        q_subtitle.setText(number+"번째 질문");
+        if(man.equals("Null")){
+            man_text.setText("답변을 등록해주세요.");
+        }
+        else{
+            man_text.setText(man);
+        }
+        if(woman.equals("Null")){
+            woman_text.setText("상대방이 아직 입력을 하지 않았어요.");
+        }
+        else{
+            woman_text.setText(woman);
+        }
+        ImageView close = findViewById(R.id.close);
+
+        close.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getActivity(),QuestionList.class);
-                quest.send(intent, position, server_day);
+            public void onClick(View v) {
+                Intent intent = new Intent(QuestionList.this,Main.class);
                 startActivity(intent);
             }
         });
-        return view;
-    }
-    public void setDailyAlarm() {
-        AlarmManager alarmManager = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(getActivity(), YourBroadcastReceiver.class);
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getActivity(), 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        man_text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomDialog.getInstance(dia.getContext()).showDefaultDialog();
+            }
+        });
 
-        // 매일 자정에 알람이 울리도록
-
-        // 매일 자정에 알람이 울리도록 설정
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(System.currentTimeMillis());
-        calendar.set(Calendar.HOUR_OF_DAY, 0);
-        calendar.set(Calendar.MINUTE, 0);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-
-        if (calendar.getTimeInMillis() <= System.currentTimeMillis()) {
-            calendar.add(Calendar.DAY_OF_YEAR, 1);
-        }
-
-
-
-        // 알람 등록
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        } else {
-            alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
-        }
-        Log.d("Alarm", "등록 되었습니다."); // 로그 메시지 추가
     }
 }
-class Question{
-    String[] man; //남자 질문지 내용
-    String[] woman;//여자 질문지 내용
-    String[] question;//질문
-    Question(int day,String[] q_list){
-        man=new String[day]; //day값 만큼 배열 생성
-        woman=new String[day]; //day값 만큼 배열 생성
-        question=new String[day]; //day값 만큼 배열 생성
-        for(int i=0;day>0;day--){
-            man[i]="Null"; //day값 만큼 디비에서 불러와서 저장
-            woman[i]="Null";
-            if(q_list[i].length()>25) {
-                String a;
-                String b;
-                a=q_list[i].substring(0,25);
-                b=q_list[i].substring(25,q_list[i].length());
-                if(i>=10) {
-                    question[day - 1] = (i + 1) + ". " + a + "\n       " + b;
-                }
-                else
-                    question[day - 1] = (i + 1) + ". " + a + "\n     " + b;
-            }
-            else {
-                question[day - 1] = (i + 1) + ". " + q_list[i];
-            }
-                i++;
 
-        }
-    }
-    void send(Intent intent, int position,int server){
-        intent.putExtra("man",this.man[position]); //나
-        intent.putExtra("woman",this.woman[position]);// 상대
-        intent.putExtra("question",this.question[position]);//질문
-        intent.putExtra("number",server-position);//질문지 번호
-    }
-}
+

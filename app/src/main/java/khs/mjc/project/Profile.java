@@ -15,6 +15,7 @@ import org.w3c.dom.Text;
 public class Profile extends AppCompatActivity {
     TextView text_gz;
     TextView text_if;
+    TextView text_t3;
    // TextView text3;
     TextView title;
     @Override
@@ -27,6 +28,7 @@ public class Profile extends AppCompatActivity {
 
         text_gz = (TextView) findViewById(R.id.pf_t);
         text_if=(TextView)findViewById(R.id.pf_t2);
+        text_t3 = findViewById(R.id.pf_t3);
        // text3=(TextView)findViewById(R.id.textView10);
 
          text_gz.setOnClickListener(new View.OnClickListener() {
@@ -43,5 +45,12 @@ public class Profile extends AppCompatActivity {
                  startActivity(intent);
              }
          });
+        text_t3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Profile.this, Proflie_account.class);
+                startActivity(intent);
+            }
+        });
     }
 }
