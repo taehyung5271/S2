@@ -54,5 +54,17 @@
         app:layout_constraintTop_toBottomOf="@+id/underlineView"
         app:layout_constraintEnd_toEndOf="parent"
         />
+    <ExpandableListView
+        android:id="@+id/eListView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layoutDirection="rtl"
+        android:nestedScrollingEnabled="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addItemButton" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
